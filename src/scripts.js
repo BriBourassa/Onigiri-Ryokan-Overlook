@@ -3,12 +3,9 @@
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
+import fetchAll from './apiCalls';
+import Customer from './classes/Customer-class';
 
-import './images/brimaskbig.png'
-import './images/tori-logo.jpg'
-import './images/japanlantern.jpg'
-import './images/fox-outline.png'
-import './images/tori-sun.png'
+import './images/onigiri.png'
+import './images/landscape.png'
 
-
-console.log('This is the JavaScript entry file - your code begins here.');
