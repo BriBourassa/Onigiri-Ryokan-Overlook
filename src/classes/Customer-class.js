@@ -2,16 +2,16 @@ class Customer{
     constructor(customerObj){
         this.id = customerObj.id,
         this.name = customerObj.name,
-        this.allBookings = [],
+        this.bookings = [],
         this.spent = 0
     }
 
     findCustomerBookings(bookingData){
-        return this.allBookings = bookingData.filter(booking => booking.userID === this.id)
+        return this.bookings = bookingData.filter(booking => booking.userID === this.id)
     }
 
     getTotalCost(){
-        // reduce() add to acc to this.allBookings?
+        // reduce() add to acc to this.bookings?
     }
 
     createNewBooking(booking){

@@ -32,12 +32,12 @@ describe('customer', () => {
         expect(customer2.name).to.equal("Rocio Schuster")
     })
 
-   
-    it('should be able to store bookings in allBookings array', () => {
-        expect(this.allBookings.length).to.be.greaterThan(0)
+    it('should be able to store bookings in bookings array', () => {
+        customer1.findCustomerBookings(bookings)
+        customer2.findCustomerBookings(bookings)
+        expect(customer1.bookings).to.deep.equal([bookings[0], bookings[1]])
+        expect(customer2.bookings).to.deep.equal([bookings[2]])
     })
-    //value greater than 0, yay!
-
-
+  
 
 });
