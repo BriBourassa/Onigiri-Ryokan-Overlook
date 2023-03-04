@@ -35,7 +35,7 @@
   </section>
 
   
-  <!-- dahsboard page -->
+  
 <section class="main-page">
   <!-- header  -->
   <header class="header">
@@ -43,16 +43,39 @@
     <h1 class="welcome-title">Onigiri Ryokan</h1>
   </header>
   
-<!-- navigation -->
-  <nav class="nav-bar">
-    <h2>Welcome, ${customer}!</h2>
-    <h3>You have spent: 100$</h3>
-      <button class="view-bookings-btn">See your bookings</button>
-      
-  </nav>
+<!-- dashboard -->
+<section class="dashboard hidden">
+  <div>
+      <h2>Welcome, ${customer}!</h2>
+      <h3>You have spent: 100$</h3>
+    <div class="buttons-container">
+      <!-- <button class="view-bookings-btn">See your bookings</button> -->
+      <button class="make-booking-btn">Make new booking</button>
+    </section>
+    </div>
+  </div>
+
+  <!-- put existing bookings here -->
+
+  <div class="existing-bookings" id="existingBookingsSection">
+    hi
+  </div>
+
+
 </section>
 
 
+
+<!-- make bookings page -->
+<section class="make-bookings hiden">
+  <form>
+    <label for="date">Check availability:
+    <input type="date" id="date-pick" name="date">
+    <button>Submit</button>
+    </label>
+    <!-- <select> option value="the 4 room types" -->
+  </form>
+</section>
 
   
   <script src="bundle.js"></script>

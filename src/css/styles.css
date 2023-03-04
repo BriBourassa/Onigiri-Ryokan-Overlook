@@ -8,17 +8,9 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-  /* background-image: url("../images/landscape.png"); */
-  position:static;
-  background-repeat: no-repeat;
-  /* background-attachment: local; */
-  background-size: contain;
   height: 100vh;
   border: solid 10px blue;
-  /* background: rgb(154,153,161); */
-
- 
+  background: rgb(154,153,161);
 }
 
 .login-and-logo-bubble{
@@ -51,6 +43,9 @@ body {
 
 .main-page{
   border: solid 10px orange;
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start; */
 }
 
 .header{
@@ -81,10 +76,13 @@ body {
   -webkit-text-stroke-color: black;
 }
 
-.nav-bar{
+.dashboard{
   border: solid 10px purple;
   display: flex;
   flex-direction:column;
-  align-items: center;
+  /* align-items: flex-start; */
   padding-top:30px;
 }
+
+
+
