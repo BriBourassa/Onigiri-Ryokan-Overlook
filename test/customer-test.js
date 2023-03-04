@@ -8,11 +8,11 @@ describe('customer', () => {
     let allBookings;
     let room;
 
-    // beforeEach(() => {
-    //     customer = new Customer(
+    beforeEach(() => {
+        customer = new Customer(
 
-    //     )
-    // })
+        )
+    })
 
     it('should be a function', () => {
         expect(Customer).to.be.a('function')

@@ -8,9 +8,8 @@ class Customer{
         this.spent = 0
     }
 
-    //argument is fetch data
     findCustomerBookings(bookingData){
-        this.allBookings = bookingData.filter(booking => booking.userID === this.id)
+        return this.allBookings = bookingData.filter(booking => booking.userID === this.id)
     }
 
     getTotalCost(){
