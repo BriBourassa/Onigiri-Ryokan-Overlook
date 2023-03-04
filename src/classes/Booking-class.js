@@ -1,15 +1,10 @@
 class Booking{
-    constructor(bookingObj){
-        this.id = bookingObj.id,
-        this.userID = bookingObj.userID,
-        this.date = bookingObj.date,
-        this.roomNumber = bookingObj.roomNumber
+    constructor(bookingsArr){
+        this.bookings = bookingsArr
     }
     
-    checkForBooking(customerData, bookingData){
-        const customerRoom = bookingData.filter(booking => {
-            return booking.userID === customerData.id
-        })
+    getBookingsByUserId(id){
+        return this.bookings.filter(booking => booking.userID === id)
     }
 
 
