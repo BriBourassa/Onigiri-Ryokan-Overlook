@@ -33,7 +33,7 @@ describe('customer', () => {
     })
 
    
-    it.skip('should be able to store bookings in pastBookings array', () => {
+    it('should be able to store bookings in allBookings array', () => {
         expect(this.allBookings.length).to.be.greaterThan(0)
     })
     //value greater than 0, yay!
