@@ -5,6 +5,7 @@ import Customer from './classes/Customer-class';
 import Booking from './classes/Booking-class';
 import Room from './classes/Rooms-class';
 
+
 import './images/onigiri.png'
 import './images/landscape.png'
 
@@ -38,10 +39,11 @@ fetchAll(1)
 
 function viewCustomerDashboard(){
     customer.findCustomerBookings(bookingData)
-    console.log(customer.findCustomerBookings(bookingData))
+    // console.log(customer.findCustomerBookings(bookingData))
+    const total = customer.getTotalCost(rooms)
    greetingSection.innerHTML = `
     <h2>Welcome, ${customer.name}!</h2>
-    <h3>You have spent ${customer.spent}</h3>
+    <h3>You have spent ${total}</h3>
     <p>Your current bookings are:</p>`
 
     customer.bookings.forEach(booking => {
@@ -49,9 +51,11 @@ function viewCustomerDashboard(){
         <div>
             <p>Date: ${booking.date}</p>
             <p>Room Number: ${booking.roomNumber}</p>
+            
         </div>
         `
     }) 
+    
 
 };
 
