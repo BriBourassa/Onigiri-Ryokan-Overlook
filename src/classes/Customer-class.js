@@ -12,6 +12,7 @@ class Customer{
 
     getTotalCost(){
         // reduce() add to acc to this.bookings?
+        
     }
 
     createNewBooking(booking){

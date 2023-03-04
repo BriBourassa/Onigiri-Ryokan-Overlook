@@ -3,7 +3,7 @@ import './css/styles.css';
 import fetchAll from './apiCalls';
 import Customer from './classes/Customer-class';
 import Booking from './classes/Booking-class';
-import Room from './classes/Room-class';
+import Room from './classes/Rooms-class';
 
 import './images/onigiri.png'
 import './images/landscape.png'
@@ -37,9 +37,21 @@ fetchAll(1)
 });
 
 function viewCustomerDashboard(){
+    customer.findCustomerBookings(bookingData)
+    console.log(customer.findCustomerBookings(bookingData))
    greetingSection.innerHTML = `
     <h2>Welcome, ${customer.name}!</h2>
     <h3>You have spent ${customer.spent}</h3>
-    `
+    <p>Your current bookings are:</p>`
+
+    customer.bookings.forEach(booking => {
+        greetingSection.innerHTML += `
+        <div>
+            <p>Date: ${booking.date}</p>
+            <p>Room Number: ${booking.roomNumber}</p>
+        </div>
+        `
+    }) 
+
 };
 
