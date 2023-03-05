@@ -17,7 +17,7 @@ class Customer{
                 acc += room.costPerNight
             }
             })
-            console.log(acc)
+            // console.log(acc)
             return acc
         },0) 
     }
