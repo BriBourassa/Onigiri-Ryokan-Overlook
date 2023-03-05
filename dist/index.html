@@ -4,33 +4,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Onigiri Ryokan</title>
 </head>
 <body>
   
   <!-- login page -->
-  <div class="hide-bubble">
+  <div class="hide-bubble hidden">
   <section class="login-and-logo-bubble">
    
-    <section class="">
-      <div class="tori-logo">
-        <img class ="logo" src="./images/tori-sun.png">
-      </div>
-    </section>
+    <!-- <section class=""> -->
+        <img class ="onigiri-logo-login" src="./images/onigiri.png">
+    <!-- </section> -->
 
-    <section class="login-section">
+    <section class="login-form">
       <form class="form" method="post">
         <div class="login-container">
           <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+          <input type="text" placeholder="Enter Username" name="uname" autocomplete="on" required>
       
           <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <input type="password" placeholder="Enter Password" name="psw" autocomplete="on" required>
       
           <button type="submit">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
+   
         </div>
       </form>
     </section>
@@ -39,12 +35,65 @@
   </section>
 
   
-  <!-- dahsboard page -->
-
   
+<section class="main-page">
+  <!-- header  -->
+  <header class="header">
+    <img class ="onigiri-logo" src="./images/onigiri.png">
+    <h1 class="hotel-title">Onigiri Ryokan</h1>
+  </header>
+  
+<!-- dashboard -->
+<section class="dashboard hiden">
+  <!-- <div> -->
+    <section class="greeting-container">
+    <div id="greeting">
+      <h2>Welcome, customer!</h2>
+      <h3>You have spent: 100$</h3>
+    <!-- </div> -->
+  </section>
+
+    <!-- make bookings page -->
+<section class="make-bookings">
+  <h3>Select a new booking:</h3>
+
+  <form>
+    <label for="date">Check availability:
+    <input type="date" id="calendar" name="date">
+    <button id="search-btn">Search</button>
+    </label>
+  </form>
+
+<div class="dropdown-container">
+  <label for="choose">Choose a Room Type:</label>
+  <select name="room-type-selector" id="roomTypeSelector">
+    <option value="all-rooms">All Rooms</option>
+    <option value="residential-suite">Residential  Suite</option>
+    <option value="suite">Suite</option>
+    <option value="junior-suite">Junior Suite</option>
+    <option value="single-room">Single Room</option>
+  </select>
+</div>
+
+    <!-- <div class="make-new-booking-btn-container"> -->
+      <!-- <button class="view-bookings-btn">See your bookings</button> -->
+      <!-- <button class="make-new-booking-btn">Make new booking</button> -->
+
+    </section>
+    <!-- </div> -->
+  </section>
+ 
 
 
+  </div>
 
+  <!-- put existing bookings here -->
+  <p>Your current bookings are:</p>
+  <div class="existing-bookings" id="existingBookingsSection">
+  </div>
+
+
+</section>
 
   
   <script src="bundle.js"></script>
