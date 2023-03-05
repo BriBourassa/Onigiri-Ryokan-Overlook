@@ -14,6 +14,8 @@ const buttonSearch = document.getElementById('search-btn')
 const calendar = document.getElementById('calendar')
 const dropdownRoomSelector = document.getElementById('roomTypeSelector')
 
+// let availableRooms;
+
 let greeting;
 // let customerData
 let customer;
@@ -68,8 +70,7 @@ function viewCustomerDashboard(){
         existingBookingsSection.innerHTML += `
         <div class="booking">
             <p>Date: ${booking.date}</p>
-            <p>Room Number: ${booking.roomNumber}</p>
-            
+            <p>Room Number: ${booking.roomNumber}</p>  
         </div>
         `
     }) 
@@ -80,24 +81,28 @@ function searchRoomsByDate(){
     const selectedCalendarDate = calendar.value.replaceAll('-', '/')
 
     const bookedRoomNumbers = bookings.getBookedRoomNumbersByDate(selectedCalendarDate)
-    const availableRooms = rooms.getAvailableRooms(bookedRoomNumbers)
+
+    availableRooms = rooms.getAvailableRooms(bookedRoomNumbers)
 
     console.log(availableRooms)
 
 
     hide(existingBookingsSection)
-
 };
-
-
 
 function searchRoomsByType(){
     const selectedRoomType = dropdownRoomSelector.value
+    const transformedSelectedType = selectedRoomType.replace('-', ' ')
 
-    const bookedRoomNumbersByType = bookings.getBookedRoomByType(selectedRoomType)
-    const availableRoomsByType = rooms.getAvailableRoomsByType(bookedRoomNumbersByType)
+    // const bookedRoomType = bookings.getBookedRoomByType(selectedRoomType)
+    const availableRoomsByType = rooms.getAvailableRoomsByType(transformedSelectedType)
 
+
+
+        console.log('transformed type:', transformedSelectedType)
+        // console.log('event target', event.target.value)
         console.log(availableRoomsByType)
+
 
 };
 

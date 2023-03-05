@@ -4,11 +4,14 @@ class Rooms{
         this.availableRooms = []
     }
     getAvailableRooms(bookedRoomNumbers){
-        return this.rooms.filter(room => !bookedRoomNumbers.includes(room.number))
+         return this.availableRooms = this.rooms.filter(room => !bookedRoomNumbers.includes(room.number))
     }
 
-    getAvailableRoomsByType(bookedRoomNumbers){
-        return this.rooms.filter(room => !bookedRoomNumbers.includes(room.roomType))
+    getAvailableRoomsByType(bookedRoomType){
+        if(bookedRoomType === 'all rooms'){
+            return this.availableRooms
+        }
+        return this.availableRooms.filter(room => bookedRoomType === room.roomType)
     }
 };
 
