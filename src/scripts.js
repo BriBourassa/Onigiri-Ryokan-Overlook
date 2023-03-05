@@ -14,8 +14,7 @@ const buttonSearch = document.getElementById('search-btn')
 const calendar = document.getElementById('calendar')
 const dropdownRoomSelector = document.getElementById('roomTypeSelector')
 
-// let availableRooms;
-
+let availableRooms;
 let greeting;
 // let customerData
 let customer;
@@ -41,7 +40,6 @@ fetchAll(1)
         // bookingsRepository = new bookingRepository(bookings)
         // ^^^^^ instantiate each time in refactor
 
-
     // console.log('bookings:', bookings)
     // console.log('one customers bookings', bookings.getBookingsByUserId(customer.id))
     roomData = data[2].rooms
@@ -49,14 +47,6 @@ fetchAll(1)
     viewCustomerDashboard()
     }) 
 });
-
-function show(element) {
-    element.classList.remove('hidden');
-};
-  
-function hide(element) {
-    element.classList.add('hidden');
-};
 
 function viewCustomerDashboard(){
     customer.findCustomerBookings(bookingData)
@@ -69,6 +59,7 @@ function viewCustomerDashboard(){
     customer.bookings.forEach(booking => {
         existingBookingsSection.innerHTML += `
         <div class="booking">
+        
             <p>Date: ${booking.date}</p>
             <p>Room Number: ${booking.roomNumber}</p>  
         </div>
@@ -79,31 +70,31 @@ function viewCustomerDashboard(){
 function searchRoomsByDate(){
     event.preventDefault()
     const selectedCalendarDate = calendar.value.replaceAll('-', '/')
-
     const bookedRoomNumbers = bookings.getBookedRoomNumbersByDate(selectedCalendarDate)
-
     availableRooms = rooms.getAvailableRooms(bookedRoomNumbers)
-
-    console.log(availableRooms)
-
-
-    hide(existingBookingsSection)
+    showAvailableBookings()
 };
 
 function searchRoomsByType(){
     const selectedRoomType = dropdownRoomSelector.value
     const transformedSelectedType = selectedRoomType.replace('-', ' ')
-
-    // const bookedRoomType = bookings.getBookedRoomByType(selectedRoomType)
     const availableRoomsByType = rooms.getAvailableRoomsByType(transformedSelectedType)
-
-
-
+    availableRooms = availableRoomsByType
         console.log('transformed type:', transformedSelectedType)
-        // console.log('event target', event.target.value)
-        console.log(availableRoomsByType)
-
-
+        showAvailableBookings()
 };
 
+function showAvailableBookings(){
+    existingBookingsSection.innerHTML = ''
+    availableRooms.forEach(room => {
+        console.log(room)
+        existingBookingsSection.innerHTML += `
+        <div class="booking">
+            
+            <p>Room Number: ${room.number}</p>
+            <p>Room Type: ${room.roomType}</p>  
+        </div>
+        `
+    }) 
+}
 
