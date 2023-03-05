@@ -22,9 +22,9 @@ class Customer{
         },0) 
     }
 
-    createNewBooking(booking){
-        this.bookings.push(booking)
-    }
+    // createNewBooking(booking){
+    //     this.bookings.push(booking)
+    // }
 
 };
 

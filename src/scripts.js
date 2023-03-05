@@ -12,6 +12,7 @@ const greetingSection = document.getElementById('greeting')
 
 const buttonSearch = document.getElementById('search-btn')
 const calendar = document.getElementById('calendar')
+const dropdownRoomSelector = document.getElementById('roomTypeSelector')
 
 let greeting;
 // let customerData
@@ -22,6 +23,7 @@ let roomData;
 let rooms;
 
 buttonSearch.addEventListener('click', searchRoomsByDate)
+dropdownRoomSelector.addEventListener('change', searchRoomsByType)
 
 window.addEventListener('load', () => {
 fetchAll(1)
@@ -46,6 +48,14 @@ fetchAll(1)
     }) 
 });
 
+function show(element) {
+    element.classList.remove('hidden');
+};
+  
+function hide(element) {
+    element.classList.add('hidden');
+};
+
 function viewCustomerDashboard(){
     customer.findCustomerBookings(bookingData)
     // console.log(customer.findCustomerBookings(bookingData))
@@ -54,7 +64,6 @@ function viewCustomerDashboard(){
     <h2>Welcome, ${customer.name}!</h2>
     <h3>You have spent ${total}</h3>
     `
-
     customer.bookings.forEach(booking => {
         existingBookingsSection.innerHTML += `
         <div class="booking">
@@ -69,11 +78,26 @@ function viewCustomerDashboard(){
 function searchRoomsByDate(){
     event.preventDefault()
     const selectedCalendarDate = calendar.value.replaceAll('-', '/')
+
     const bookedRoomNumbers = bookings.getBookedRoomNumbersByDate(selectedCalendarDate)
     const availableRooms = rooms.getAvailableRooms(bookedRoomNumbers)
 
     console.log(availableRooms)
-    // need to update DOM - hide "your bookings"
+
+
+    hide(existingBookingsSection)
+
+};
+
+
+
+function searchRoomsByType(){
+    const selectedRoomType = dropdownRoomSelector.value
+
+    const bookedRoomNumbersByType = bookings.getBookedRoomByType(selectedRoomType)
+    const availableRoomsByType = rooms.getAvailableRoomsByType(bookedRoomNumbersByType)
+
+        console.log(availableRoomsByType)
 
 };
 
