@@ -20,10 +20,10 @@
       <form class="form" method="post">
         <div class="login-container">
           <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+          <input type="text" placeholder="Enter Username" name="uname" autocomplete="on" required>
       
           <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <input type="password" placeholder="Enter Password" name="psw" autocomplete="on" required>
       
           <button type="submit">Login</button>
    
@@ -40,36 +40,22 @@
   <!-- header  -->
   <header class="header">
     <img class ="onigiri-logo" src="./images/onigiri.png">
-    <h1 class="welcome-title">Onigiri Ryokan</h1>
+    <h1 class="hotel-title">Onigiri Ryokan</h1>
   </header>
   
 <!-- dashboard -->
-<section class="dashboard hidden">
-  <div>
-    <section id="greeting">
+<section class="dashboard hiden">
+  <!-- <div> -->
+    <section class="greeting-container">
+    <div id="greeting">
       <h2>Welcome, customer!</h2>
       <h3>You have spent: 100$</h3>
-    </section>
-    <div class="buttons-container">
-      <!-- <button class="view-bookings-btn">See your bookings</button> -->
-      <button class="make-booking-btn">Make new booking</button>
-    </section>
-    </div>
-  </div>
+    <!-- </div> -->
+  </section>
 
-  <!-- put existing bookings here -->
+    <!-- make bookings page -->
+<section class="make-bookings">
 
-  <div class="existing-bookings" id="existingBookingsSection">
-    hi
-  </div>
-
-
-</section>
-
-
-
-<!-- make bookings page -->
-<section class="make-bookings hiden">
   <form>
     <label for="date">Check availability:
     <input type="date" id="calendar" name="date">
@@ -77,6 +63,24 @@
     </label>
     <!-- <select> option value="the 4 room types" -->
   </form>
+
+    <!-- <div class="make-new-booking-btn-container"> -->
+      <!-- <button class="view-bookings-btn">See your bookings</button> -->
+      <button class="make-new-booking-btn">Make new booking</button>
+    </section>
+    <!-- </div> -->
+  </section>
+ 
+
+
+  </div>
+
+  <!-- put existing bookings here -->
+  <p>Your current bookings are:</p>
+  <div class="existing-bookings" id="existingBookingsSection">
+  </div>
+
+
 </section>
 
   

@@ -1,4 +1,3 @@
-
 import './css/styles.css';
 import fetchAll from './apiCalls';
 import Customer from './classes/Customer-class';
@@ -33,10 +32,10 @@ fetchAll(1)
     bookingData = data[1].bookings
     bookings =  new Booking(bookingData)
     
-
-    // bookings = bookingData.map(booking => new Booking(bookingData))
-    // bookingsRepository = new bookingRepository(bookings)
-    // ^^^^^ instantiate each time in refactor
+        // optional:
+        // bookings = bookingData.map(booking => new Booking(bookingData))
+        // bookingsRepository = new bookingRepository(bookings)
+        // ^^^^^ instantiate each time in refactor
 
 
     // console.log('bookings:', bookings)
@@ -54,11 +53,11 @@ function viewCustomerDashboard(){
    greetingSection.innerHTML = `
     <h2>Welcome, ${customer.name}!</h2>
     <h3>You have spent ${total}</h3>
-    <p>Your current bookings are:</p>`
+    `
 
     customer.bookings.forEach(booking => {
-        greetingSection.innerHTML += `
-        <div>
+        existingBookingsSection.innerHTML += `
+        <div class="booking">
             <p>Date: ${booking.date}</p>
             <p>Room Number: ${booking.roomNumber}</p>
             
@@ -74,6 +73,8 @@ function searchRoomsByDate(){
     const availableRooms = rooms.getAvailableRooms(bookedRoomNumbers)
 
     console.log(availableRooms)
+    // need to update DOM - hide "your bookings"
+
 };
 
 
