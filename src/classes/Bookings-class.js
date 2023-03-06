@@ -19,7 +19,7 @@ class Bookings{
     getBookedRoomByType(type){
         const listOfReservations = this.bookings.filter(booking => booking.roomType === type)
         return listOfReservations.map(booking => booking.roomType)
-    
+        
     }
 };
 

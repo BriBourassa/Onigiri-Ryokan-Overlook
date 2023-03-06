@@ -20,7 +20,6 @@ class Customer{
     addNewBooking(bookingId){
         this.bookings.push(bookingId)
     }
-
 };
 
 export default Customer

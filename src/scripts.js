@@ -14,7 +14,6 @@ const buttonSearch = document.getElementById('search-btn')
 const calendar = document.getElementById('calendar')
 const dropdownRoomSelector = document.getElementById('roomTypeSelector')
 
-
 // const buttonNewBooking = document.getElementById(`${room.number}`);
 // buttonNewBooking.addEventListener('click', createNewBooking)
 
@@ -31,18 +30,19 @@ let selectedCalendarDate;
 buttonSearch.addEventListener('click', searchRoomsByDate)
 dropdownRoomSelector.addEventListener('change', searchRoomsByType)
 existingBookingsSection.addEventListener('click', function(event) {
-
     if(event.target.className == 'booking-button'){
         createNewBooking(parseInt(event.target.id));
     }
 })
 
-window.addEventListener('load', () => {
+window.addEventListener('load', fetchStuff)
+
+function fetchStuff(){
 fetchAll(1)
     .then(data => {
     // customerData = data[0].customers
     customer = new Customer(data[0])
-    // console.log('customer:', customer)
+    console.log('customer:', customer)
     bookingData = data[1].bookings
     bookings =  new Booking(bookingData)
     
@@ -57,10 +57,12 @@ fetchAll(1)
     rooms = new Room(roomData) 
     viewCustomerDashboard()
     }) 
-});
+};
 
 function viewCustomerDashboard(){
+    existingBookingsSection.innerHTML = ''
     customer.findCustomerBookings(bookingData)
+    console.log('do we get here??????')
     // console.log(customer.findCustomerBookings(bookingData))
     const total = customer.getTotalCost(rooms)
    greetingSection.innerHTML = `
@@ -106,41 +108,39 @@ function showAvailableBookings(){
             <button class="booking-button" id="${room.number}">Book this Room</button>  
         </div>
         `
-        
-        // const buttonNewBooking = document.getElementById(`${room.number}`);
-        // console.log(buttonNewBooking)
-        // buttonNewBooking.addEventListener('click', createNewBooking)
     }) 
-
 };
 
-
-
 function createNewBooking(roomNum){
-    // id is the room number
+  
     console.log('the thing is happening')
-    // const buttonNewBooking = document.getElementById(`${room.number}`);
-//     const doTheBooking = buttonNewBooking.closest('button')
-//  console.log(doTheBooking)
+    // const filteredAvailableRooms = availableRooms.filter(room => room.roomNumber === roomNum)
+    // console.log(filteredAvailableRooms)
+ 
+    // if(!filteredAvailableRooms.length) <<<< use this if the array is zero, there are no bookings avaiable, then add message to apologize{
 
-//     customer.addNewBooking(room.number)
-//     console.log('new booking:', customer.bookings)
 
-// console.log(typeof(roomNum))
-    
     const post = fetch('http://localhost:3001/api/v1/bookings', {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ 
-        "userID": customer.id, 
-        "date": selectedCalendarDate, 
-        "roomNumber": roomNum })
-})
-   .then(response => response.json())
-   .then(response => console.log(JSON.stringify(response)))
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+            "userID": customer.id, 
+            "date": selectedCalendarDate, 
+            "roomNumber": roomNum })
+        })
+            .then(response => response.json())
+            .then(response => console.log(JSON.stringify(response)))
+
+ 
+   fetchStuff()
+
+   customer.addNewBooking(roomNum)
+
+   console.log('now after fetch stuff', availableRooms)
+   return post
 
 };
 
