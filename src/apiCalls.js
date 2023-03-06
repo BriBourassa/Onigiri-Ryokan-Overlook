@@ -1,7 +1,5 @@
-
 const fetchData = (url) => {
     return fetch(url)
-
     .then(response => {
       if(!response.ok) {
      throw new Error("Whoops! Status Code: ", response.status);
@@ -11,11 +9,8 @@ const fetchData = (url) => {
 })
     .catch(error => { alert(`No Fetch: ${error}`)
         console.log('hi',`No Fetch: ${error}`)});
-
  };
      
- 
- 
  const fetchAll = (id) => {
     return Promise.all([
      fetchData(`http://localhost:3001/api/v1/customers/${id}`),

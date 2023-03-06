@@ -141,10 +141,6 @@ function createNewBooking(roomNum){
                 fetchStuff() 
             })
 
-            .catch((error) => {
-                console.error("Error:", error);
-              });
-
    customer.addNewBooking(roomNum)
 
    return post
