@@ -39,5 +39,6 @@ describe('customer', () => {
         expect(customer2.bookings).to.deep.equal([bookings[2]])
     })
   
+    it('should assign username ')
 
 });

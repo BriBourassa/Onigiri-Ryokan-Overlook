@@ -12,18 +12,5 @@ const fetchData = (url) => {
  ])
 };
 
-// const postData =  {
-//     fetch('http://localhost:3001/api/v1/bookings', {
-//     method: 'POST',
-//     headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ "id": 78912 })
-// })
-//    .then(response => response.json())
-//    .then(response => console.log(JSON.stringify(response)))
-// };
-
      export default fetchAll
  

@@ -7,19 +7,20 @@ import Room from './classes/Rooms-class';
 import './images/onigiri.png'
 import './images/landscape.png'
 
-const existingBookingsSection = document.getElementById('existingBookingsSection')
-const greetingSection = document.getElementById('greeting')
+const loginBubble = document.querySelector('.hide-bubble')
+const mainPage = document.querySelector('.main-page');
+const existingBookingsSection = document.getElementById('existingBookingsSection');
+const greetingSection = document.getElementById('greeting');
 
-const buttonSearch = document.getElementById('search-btn')
-const calendar = document.getElementById('calendar')
-const dropdownRoomSelector = document.getElementById('roomTypeSelector')
+const buttonSearch = document.getElementById('search-btn');
+const calendar = document.getElementById('calendar');
+const dropdownRoomSelector = document.getElementById('roomTypeSelector');
+const buttonSumbmitLogin = document.getElementById('submit-login')
 
 // const buttonNewBooking = document.getElementById(`${room.number}`);
 // buttonNewBooking.addEventListener('click', createNewBooking)
 
 let availableRooms;
-let greeting;
-// let customerData
 let customer;
 let bookingData;
 let bookings;
@@ -35,34 +36,53 @@ existingBookingsSection.addEventListener('click', function(event) {
     }
 })
 
+buttonSumbmitLogin.addEventListener('click', login)
 window.addEventListener('load', fetchStuff)
 
 function fetchStuff(){
 fetchAll(1)
     .then(data => {
-    // customerData = data[0].customers
+        // if(!response.ok){
+        //     //??
+        // }
+
     customer = new Customer(data[0])
-    console.log('customer:', customer)
+    console.log('customers id:', customer.username)
     bookingData = data[1].bookings
     bookings =  new Booking(bookingData)
-    
-        // optional:
-        // bookings = bookingData.map(booking => new Booking(bookingData))
-        // bookingsRepository = new bookingRepository(bookings)
-        // ^^^^^ instantiate each time in refactor
-
-    // console.log('bookings:', bookings)
-    // console.log('one customers bookings', bookings.getBookingsByUserId(customer.id))
     roomData = data[2].rooms
     rooms = new Room(roomData) 
     viewCustomerDashboard()
     }) 
+    .catch((error) => {
+        console.error("Error:", error);
+        console.log('you broke it')
+    });
+};
+
+function show(element) {
+    element.classList.remove('hidden');
+  };
+  
+  function hide(element) {
+    element.classList.add('hidden');
+  };
+
+function login(){
+    show(mainPage)
+    hide(loginBubble)
+    // .find()
+//     if (customer.username === )
+// step 1 - get buttonSumbmitLogin to show dashboard section (event listener?)
+// step 3 - extract num from id
+// feed id num into
 };
 
 function viewCustomerDashboard(){
+    // show(mainPage)
     existingBookingsSection.innerHTML = ''
     customer.findCustomerBookings(bookingData)
-    console.log('do we get here??????')
+    console.log('this is the dashboard')
     // console.log(customer.findCustomerBookings(bookingData))
     const total = customer.getTotalCost(rooms)
    greetingSection.innerHTML = `
@@ -72,7 +92,6 @@ function viewCustomerDashboard(){
     customer.bookings.forEach(booking => {
         existingBookingsSection.innerHTML += `
         <div class="booking">
-        
             <p>Date: ${booking.date}</p>
             <p>Room Number: ${booking.roomNumber}</p>  
         </div>
@@ -113,12 +132,7 @@ function showAvailableBookings(){
 
 function createNewBooking(roomNum){
   
-    console.log('the thing is happening')
-    // const filteredAvailableRooms = availableRooms.filter(room => room.roomNumber === roomNum)
-    // console.log(filteredAvailableRooms)
- 
-    // if(!filteredAvailableRooms.length) <<<< use this if the array is zero, there are no bookings avaiable, then add message to apologize{
-
+    console.log('the thing is happening is post')
 
     const post = fetch('http://localhost:3001/api/v1/bookings', {
         method: 'POST',
@@ -132,15 +146,18 @@ function createNewBooking(roomNum){
             "roomNumber": roomNum })
         })
             .then(response => response.json())
-            .then(response => console.log(JSON.stringify(response)))
+            .then(response => {
+                fetchStuff() 
+            })
 
- 
-   fetchStuff()
+            .catch((error) => {
+                console.error("Error:", error);
+              });
 
    customer.addNewBooking(roomNum)
 
-   console.log('now after fetch stuff', availableRooms)
    return post
-
+   
 };
+
 
