@@ -39,5 +39,8 @@ describe('customer', () => {
         expect(customer2.bookings).to.deep.equal([bookings[2]])
     })
   
+    it('should assign correct username to customer instantiation', () => {
+        expect(customer1.username).to.equal(1)
+    })
 
 });
