@@ -1,8 +1,20 @@
 
 const fetchData = (url) => {
     return fetch(url)
-     .then(response => response.json())
+
+    .then(response => {
+      if(!response.ok) {
+     throw new Error("Whoops! Status Code: ", response.status);
+ } else {
+     return response.json()
+ }
+})
+    .catch(error => { alert(`No Fetch: ${error}`)
+        console.log('hi',`No Fetch: ${error}`)});
+
  };
+     
+ 
  
  const fetchAll = (id) => {
     return Promise.all([

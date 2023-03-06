@@ -42,10 +42,6 @@ window.addEventListener('load', fetchStuff)
 function fetchStuff(){
 fetchAll(1)
     .then(data => {
-        // if(!response.ok){
-        //     //??
-        // }
-
     customer = new Customer(data[0])
     console.log('customers id:', customer.username)
     bookingData = data[1].bookings
@@ -53,11 +49,7 @@ fetchAll(1)
     roomData = data[2].rooms
     rooms = new Room(roomData) 
     viewCustomerDashboard()
-    }) 
-    .catch((error) => {
-        console.error("Error:", error);
-        console.log('you broke it')
-    });
+    })
 };
 
 function show(element) {
@@ -72,10 +64,8 @@ function login(){
     show(mainPage)
     hide(loginBubble)
     // .find()
-//     if (customer.username === )
-// step 1 - get buttonSumbmitLogin to show dashboard section (event listener?)
-// step 3 - extract num from id
-// feed id num into
+//     if (customer.username === customer.name${id})
+
 };
 
 function viewCustomerDashboard(){
@@ -124,6 +114,7 @@ function showAvailableBookings(){
         <div class="booking">
             <p>Room Number: ${room.number}</p>
             <p>Room Type: ${room.roomType}</p>
+            <p>Cost Per Night: ${room.costPerNight}<p>
             <button class="booking-button" id="${room.number}">Book this Room</button>  
         </div>
         `
