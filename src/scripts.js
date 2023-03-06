@@ -14,6 +14,10 @@ const buttonSearch = document.getElementById('search-btn')
 const calendar = document.getElementById('calendar')
 const dropdownRoomSelector = document.getElementById('roomTypeSelector')
 
+
+// const buttonNewBooking = document.getElementById(`${room.number}`);
+// buttonNewBooking.addEventListener('click', createNewBooking)
+
 let availableRooms;
 let greeting;
 // let customerData
@@ -22,9 +26,16 @@ let bookingData;
 let bookings;
 let roomData;
 let rooms;
+let selectedCalendarDate;
 
 buttonSearch.addEventListener('click', searchRoomsByDate)
 dropdownRoomSelector.addEventListener('change', searchRoomsByType)
+existingBookingsSection.addEventListener('click', function(event) {
+
+    if(event.target.className == 'booking-button'){
+        createNewBooking(parseInt(event.target.id));
+    }
+})
 
 window.addEventListener('load', () => {
 fetchAll(1)
@@ -69,7 +80,7 @@ function viewCustomerDashboard(){
 
 function searchRoomsByDate(){
     event.preventDefault()
-    const selectedCalendarDate = calendar.value.replaceAll('-', '/')
+    selectedCalendarDate = calendar.value.replaceAll('-', '/')
     const bookedRoomNumbers = bookings.getBookedRoomNumbersByDate(selectedCalendarDate)
     availableRooms = rooms.getAvailableRooms(bookedRoomNumbers)
     showAvailableBookings()
@@ -87,14 +98,49 @@ function searchRoomsByType(){
 function showAvailableBookings(){
     existingBookingsSection.innerHTML = ''
     availableRooms.forEach(room => {
-        console.log(room)
+        // console.log(room)
         existingBookingsSection.innerHTML += `
         <div class="booking">
-            
             <p>Room Number: ${room.number}</p>
-            <p>Room Type: ${room.roomType}</p>  
+            <p>Room Type: ${room.roomType}</p>
+            <button class="booking-button" id="${room.number}">Book this Room</button>  
         </div>
         `
+        
+        // const buttonNewBooking = document.getElementById(`${room.number}`);
+        // console.log(buttonNewBooking)
+        // buttonNewBooking.addEventListener('click', createNewBooking)
     }) 
-}
+
+};
+
+
+
+function createNewBooking(roomNum){
+    // id is the room number
+    console.log('the thing is happening')
+    // const buttonNewBooking = document.getElementById(`${room.number}`);
+//     const doTheBooking = buttonNewBooking.closest('button')
+//  console.log(doTheBooking)
+
+//     customer.addNewBooking(room.number)
+//     console.log('new booking:', customer.bookings)
+
+// console.log(typeof(roomNum))
+    
+    const post = fetch('http://localhost:3001/api/v1/bookings', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 
+        "userID": customer.id, 
+        "date": selectedCalendarDate, 
+        "roomNumber": roomNum })
+})
+   .then(response => response.json())
+   .then(response => console.log(JSON.stringify(response)))
+
+};
 
