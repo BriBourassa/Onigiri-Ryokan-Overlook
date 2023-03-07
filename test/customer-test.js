@@ -14,7 +14,6 @@ describe('customer', () => {
         customer2 = new Customer(customers[1])
     })
 
-        // all these cna be one! make a customer :)
     it('should be a function', () => {
         expect(Customer).to.be.a('function')
     })
@@ -33,13 +32,12 @@ describe('customer', () => {
         expect(customer1.name).to.equal("Leatha Ullrich")
         expect(customer2.name).to.equal("Rocio Schuster")
     })
-/// end
 
     it('should be able to store bookings in bookings array', () => {
         customer1.findCustomerBookings(bookings)
         customer2.findCustomerBookings(bookings)
         expect(customer1.bookings).to.deep.equal([bookings[0], bookings[1]])
-        expect(customer2.bookings).to.deep.equal([bookings[2]])
+        expect(customer2.bookings).to.deep.equal([bookings[2]])   
     })
 
     it('should get the total cost of rooms', () => {

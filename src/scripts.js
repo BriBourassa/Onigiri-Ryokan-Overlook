@@ -43,9 +43,7 @@ buttonSumbmitLogin.addEventListener('click', () => {
 function fetchStuff(id){
 fetchAll(id)
     .then(data => {
-        // console.log('fetching stuff now!!!!!!')
     customer = new Customer(data[0])
-  
     bookingData = data[1].bookings
     bookings =  new Booking(bookingData)
     roomData = data[2].rooms
@@ -63,7 +61,6 @@ function hide(element) {
 };
 
 function signIn(){
-    // console.log("hi this is signin", username.value, password.value)
     const id = validateInput(username.value, password.value)
     if(id){
       fetchStuff(id)
@@ -99,7 +96,6 @@ function viewCustomerDashboard(){
     hide(loginBubble)
     existingBookingsSection.innerHTML = ''
     customer.findCustomerBookings(bookingData)
-    // console.log('this is the dashboard')
     const total = customer.getTotalCost(rooms)
    greetingSection.innerHTML = `
     <h2>Welcome, ${customer.name}!</h2>
@@ -119,7 +115,9 @@ function searchRoomsByDate(){
     event.preventDefault()
     selectedCalendarDate = calendar.value.replaceAll('-', '/')
     const bookedRoomNumbers = bookings.getBookedRoomNumbersByDate(selectedCalendarDate)
-    availableRooms = rooms.getAvailableRooms(bookedRoomNumbers)
+    // availableRooms = rooms.getAvailableRooms(bookedRoomNumbers)
+    rooms.getAvailableRooms(bookedRoomNumbers)
+    availableRooms = rooms.availableRooms
     showAvailableBookings()
 };
 
@@ -128,14 +126,12 @@ function searchRoomsByType(){
     const transformedSelectedType = selectedRoomType.replace('-', ' ')
     const availableRoomsByType = rooms.getAvailableRoomsByType(transformedSelectedType)
     availableRooms = availableRoomsByType
-        // console.log('transformed type:', transformedSelectedType)
-        showAvailableBookings()
+    showAvailableBookings()
 };
 
 function showAvailableBookings(){
     existingBookingsSection.innerHTML = ''
     availableRooms.forEach(room => {
-        // console.log(room)
         existingBookingsSection.innerHTML += `
         <div class="booking">
             <p>Room Number: ${room.number}</p>
@@ -148,7 +144,6 @@ function showAvailableBookings(){
 };
 
 function createNewBooking(roomNum){
-    // console.log('the thing is happening is post')
     const post = fetch('http://localhost:3001/api/v1/bookings', {
         method: 'POST',
         headers: {

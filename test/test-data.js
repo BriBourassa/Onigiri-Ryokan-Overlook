@@ -27,6 +27,14 @@ const rooms = [
         numBeds: 2,
         costPerNight: 477.38
     },
+    {
+        number: 3,
+        roomType: "suite",
+        bidet: false,
+        bedSize: "full",
+        numBeds: 2,
+        costPerNight: 477.38
+    }
 ]
 
 const bookings = [

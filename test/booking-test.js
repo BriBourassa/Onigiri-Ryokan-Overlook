@@ -3,7 +3,6 @@ import {customers, rooms, bookings} from './test-data';
 const expect = chai.expect;
 import Bookings from '../src/classes/Bookings-class';
 
-
 describe('booking', () => {
     let allBookings;
     
@@ -12,12 +11,7 @@ describe('booking', () => {
     })
 
     it('should instantiate our good friend allBookings', () => {
-        const expected = {
-            id: "5fwrgu4i7k55hl6sz",
-            userID: 1,
-            date: "2022/04/22",
-            roomNumber: 2
-        }
+        const expected = bookings[0]
         expect(allBookings.bookings[0]).to.deep.equal(expected)
         expect(allBookings.bookings.length).to.equal(4)
     })
