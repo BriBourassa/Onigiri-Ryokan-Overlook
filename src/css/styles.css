@@ -67,6 +67,7 @@ body {
 .greeting-container,
 .make-bookings{
   border: solid 5px hsla(0, 95%, 35%, 1);
+  border: solid black 5px;
   display: inline-block;
   margin: 5%;
   text-align: center;
@@ -85,6 +86,7 @@ form{
 .existing-bookings{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   padding: 20px;
 
 }

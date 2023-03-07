@@ -90,7 +90,7 @@ function signIn(){
 function viewCustomerDashboard(){
     show(mainPage)
     hide(loginBubble)
-    existingBookingsSection.innerHTML = '<p>Your current bookings are:'
+    existingBookingsSection.innerHTML = 'Your current bookings:'
     customer.findCustomerBookings(bookingData)
     const total = customer.getTotalCost(rooms)
     const fixedTotal = total.toFixed(2)
@@ -102,7 +102,7 @@ function viewCustomerDashboard(){
         existingBookingsSection.innerHTML += `
         <div class="booking">
             <p>Date: ${booking.date}</p>
-            <p>Room Number: ${booking.roomNumber}</p>  
+            <p>Room Number: ${booking.roomNumber}</p> 
         </div>
         `
     }) 
