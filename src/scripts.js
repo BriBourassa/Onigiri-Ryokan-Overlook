@@ -68,38 +68,40 @@ function signIn(){
   };
 
   function validateInput(username, password){
+      if(username.substring(0, 8) !== 'customer'){
+          alert('Sorry, incorrect USERNAME! Please try again.')
+      //   loginBubble.innerHTML = ''
+      //   loginBubble.innerHTML +=  `<div class="displayed-bookings">
+      //   <p>Sorry! Incorrect Username<p>`
+        return
+      }
+      if(parseInt(username.substring(8))  > 50 || parseInt(username.substring(8)) < 1){
+          alert('USERNAME number must be between 1 and 50! We only have 50 customers here.')
+      //   loginBubble.innerHTML = ''
+      //   loginBubble.innerHTML +=  `<div class="displayed-bookings">
+      //   <p>Sorry! Incorrect Username<p>`
+        return
+      }
     if(password !== 'overlook2021'){
-      existingBookingsSection.innerHTML = ''
-      existingBookingsSection.innerHTML +=  `<div class="displayed-bookings">
-      <p>Sorry! Incorrect Password<p>`
-      return
-    }
-    if(username.substring(0, 8) !== 'customer'){
-      existingBookingsSection.innerHTML = ''
-      existingBookingsSection.innerHTML +=  `<div class="displayed-bookings">
-      <p>Sorry! Incorrect Username<p>`
-      return
-    }
-    if(parseInt(username.substring(8))  > 50 || parseInt(username.substring(8)) < 1){
-      existingBookingsSection.innerHTML = ''
-      existingBookingsSection.innerHTML +=  `<div class="displayed-bookings">
-      <p>Sorry! Incorrect Username<p>`
+        alert('Sorry, incorrect PASSWORD! Please try again.')
+    //   loginBubble.innerHTML = ''
+    //   loginBubble.innerHTML +=  `<div class="displayed-bookings">
+    //   <p>Sorry! Incorrect Password<p>`
       return
     }
     return username.substring(8)
   };
   
-
-
 function viewCustomerDashboard(){
     show(mainPage)
     hide(loginBubble)
     existingBookingsSection.innerHTML = ''
     customer.findCustomerBookings(bookingData)
     const total = customer.getTotalCost(rooms)
-   greetingSection.innerHTML = `
+    const fixedTotal = total.toFixed(2)
+    greetingSection.innerHTML = `
     <h2>Welcome, ${customer.name}!</h2>
-    <h3>You have spent ${total}</h3>
+    <h3>You have spent ${fixedTotal}</h3>
     `
     customer.bookings.forEach(booking => {
         existingBookingsSection.innerHTML += `
