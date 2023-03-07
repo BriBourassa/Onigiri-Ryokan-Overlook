@@ -1,10 +1,10 @@
 class Rooms{
     constructor(roomArr){
         this.rooms = roomArr
-        // this.availableRooms = []
+        this.availableRooms = []
     }
     getAvailableRooms(bookedRoomNumbers){
-         return this.availableRooms = this.rooms.filter(room => !bookedRoomNumbers.includes(room.number))
+         this.availableRooms = this.rooms.filter(room => !bookedRoomNumbers.includes(room.number))
     }
     getAvailableRoomsByType(bookedRoomType){
         if(bookedRoomType === 'all rooms'){

@@ -7,62 +7,48 @@
   <title>Onigiri Ryokan</title>
 </head>
 <body>
-  
   <!-- login page -->
-  <div class="hide-bubble hidden">
+  <div class="hide-bubble hiden">
   <section class="login-and-logo-bubble">
-        <img class ="onigiri-logo-login" src="./images/onigiri.png">
+        <img class ="onigiri-logo-login" src="./images/onigiri.png" alt="onigiri-logo">
     <section class="login-form">
       <form class="form" method="post">
         <div class="login-container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" autocomplete="on" required>
-      
+          <label for="username"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="username" id="username-input" autocomplete="on" required>
           <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" autocomplete="on" required>
-      
+          <input type="password" placeholder="Enter Password" name="psw" id="password-input" autocomplete="on" required>
           <button type="submit" id="submit-login">Login</button>
-   
         </div>
       </form>
     </section>
   </div>
-
   </section>
-
-  
-  
-<section class="main-page hiden">
+<section class="main-page hidden">
   <!-- header  -->
   <header class="header">
-    <img class ="onigiri-logo" src="./images/onigiri.png">
+    <img class ="onigiri-logo" src="./images/onigiri.png" alt="onigiri-logo">
     <h1 class="hotel-title">Onigiri Ryokan</h1>
   </header>
-  
 <!-- dashboard -->
 <section class="dashboard hiden">
-  <!-- <div> -->
     <section class="greeting-container">
-    <div id="greeting">
-      <h2>Welcome, customer!</h2>
-      <h3>You have spent: 100$</h3>
-    <!-- </div> -->
-  </section>
-
+      <div id="greeting">
+        <h2>Welcome, customer!</h2>
+        <h3>You have spent: 100$</h3>
+    </section>
     <!-- make bookings page -->
 <section class="make-bookings">
   <h3>Select a new booking:</h3>
-
-  <form>
-    <label for="date">Check availability:
-    <input type="date" id="calendar" name="date">
-    <button id="search-btn">Search</button>
-    </label>
-  </form>
-
+    <form>
+      <label for="calendar">Check availability:
+      <input type="date" id="calendar" name="date">
+      <button id="search-btn">Search</button>
+      </label>
+    </form>
 <div class="dropdown-container">
-  <label for="choose">Choose a Room Type:</label>
-  <select name="room-type-selector" id="roomTypeSelector">
+  <label for="roomTypeSelector">Choose a Room Type:</label>
+  <select name="choose-room-type" id="roomTypeSelector">
     <option value="all-rooms">All Rooms</option>
     <option value="residential-suite">Residential  Suite</option>
     <option value="suite">Suite</option>
@@ -70,24 +56,13 @@
     <option value="single-room">Single Room</option>
   </select>
 </div>
-
     </section>
-    <!-- </div> -->
   </section>
- 
-
-
   </div>
-
-  <!-- put existing bookings here -->
-  <!-- <p>Your current bookings are:</p> -->
   <div class="existing-bookings" id="existingBookingsSection" >
     <p>Your current bookings are:</p>
   </div>
-
-
 </section>
-
   <script src="bundle.js"></script>
 </body>
 </html>
