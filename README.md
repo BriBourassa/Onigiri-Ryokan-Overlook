@@ -26,7 +26,6 @@ GET and POST
         -This project was my first experience using POST requests and implimenting error handling in fetch calls.
 
 Unit testing
-
         - This project helped me get more comfortable and gain experince writing my own unit tests for the methods I created. I made sample data and with the help of beforeEach() managed to make the tests look clean and concise.
  
 LOGIN functionality
