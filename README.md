@@ -13,6 +13,8 @@
      - book any available room of their chosen criteria
 
 
+## Preview of App:
+
 
 
 ## Goals and Accomplishments
@@ -28,3 +30,9 @@
 
     Multiple APIs and classes
         - I had three sets of APIs to draw from, and created corraborating classes to help manipulate that data in my functions.
+
+## Developer
+- [Bri Bourassa](https://github.com/BriBourassa)
+
+And special thanks to:
+- [Lexye Jordan](https://github.com/Lexyful)
