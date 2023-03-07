@@ -1,28 +1,21 @@
 
-*{
-  /* border: solid 2px green; */
-}
-
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   height: 100vh;
   width: 100vw;
-  /* border: solid 10px blue; */
   background: rgb(154,153,161);
   position: relative;
 }
 
 .login-and-logo-bubble{
   display: flex;
-  justify-content: space-around;
-  align-self: center;
+  align-items: center;
   background-color: gray;
   opacity: 80%;
   margin-top: 30vh;
-  margin-left: 30vh;
+  margin-left: 60vh;
   margin-right: 30vh;
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  padding: 5vh;
   border-radius: 10px;
   position: absolute;
 }
@@ -39,12 +32,6 @@ body {
   padding: 10px;
 }
 
-
-/* .main-page{
-  border: solid 10px orange;
-
-} */
-
 .header{
   display: flex;
   align-items: center;
@@ -54,7 +41,6 @@ body {
   position: relative;
   background-image: url("../images/landscape.png");
   background-size:auto;
-  /* background-repeat: no-repeat; */
   height: 100vh;
   width: 97vw;
   border: solid 5px black;
@@ -63,13 +49,11 @@ body {
 .onigiri-logo{
   max-width: 15%;
   max-height: auto;
-  /* min-height: 10vh; */
-  /* position: inherit; */
 }
+
 .hotel-title{
   color: rgb(214, 28, 68);
   font-family: 'Brush Script MT', 'Brush Script Std', cursive;
-  /* position: relative; */
   font-size: 9vw;
   -webkit-text-stroke-width: 0.001em;
   -webkit-text-stroke-color: black;
@@ -77,7 +61,7 @@ body {
 
 .dashboard{
  display: flex;
-
+ justify-content: space-evenly;
 }
 
 .greeting-container,
@@ -86,33 +70,17 @@ body {
   display: inline-block;
   margin: 5%;
   text-align: center;
-  padding-top: 2em;
-  padding-bottom: 2em;
-  
-  
-
-  /* display:inline-block;
-  margin:5% auto;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  padding:2em;
-  background:hsla(67, 95%, 95%, 1); */
+  padding: 3em;
 }
 
 form{
-  padding-top: 2em;
+  padding-top: 1em;
   margin: 0.5em;
 }
 
 .make-new-booking-btn{
   padding: 5px;
 }
-
-
-
-/* h2,
-h3{
-  font-family:fantasy
-} */
 
 .existing-bookings{
   display: flex;
@@ -125,10 +93,6 @@ h3{
   border: solid 2px black;
   padding: 30px;
 }
-
-
-
-
 
 .hidden{
   display: none; 
