@@ -15,7 +15,9 @@ This was the final project for Mod 2 at Turing School of Software and Design. It
 
 ## Preview of App: ##
 
-<img width="1424" alt="onigiri ryokan type select" src="https://user-images.githubusercontent.com/111149043/223519010-e8fe76b3-fbf2-4e51-b6db-546cb1893b7d.png">
+<img width="1424" alt="oniryokan-date-pick" src="https://user-images.githubusercontent.com/111149043/223549924-5f702275-334a-48a3-89a7-ccf1394e6027.png">
+
+<img width="1424" alt="oniryokan-type" src="https://user-images.githubusercontent.com/111149043/223549954-a771689f-661b-4dfc-a117-11e2f26542a5.png">
 
 
 ## Goals and Accomplishments: ##
@@ -37,7 +39,7 @@ Multiple APIs and classes
 
 ## Future Iterations ##
 
-I would like to add a log out feature and get more CSS 
+I would like to improve the CSS and styling. I had many cute ideas but ran out of time. I only used alert() for errors in the login form, and I would have liked to make that more unique and visually pleasing. The user experience could be enhanced considerably.
 
 
 ## Developer
