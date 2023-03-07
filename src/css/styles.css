@@ -89,9 +89,25 @@ form{
 
 }
 
+p{
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+}
+
 .booking{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
   border: solid 2px black;
-  padding: 30px;
+  padding: 10px;
+  margin: 10px;
+  width: 250px
+}
+
+.tatami{
+  border: solid 1px black;
+  border-radius: 10px;
+  width: 150px;
 }
 
 .hidden{

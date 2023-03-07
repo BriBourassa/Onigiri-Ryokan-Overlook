@@ -6,6 +6,7 @@ import Room from './classes/Rooms-class';
 
 import './images/onigiri.png'
 import './images/landscape.png'
+import './images/tatami.png'
 
 const loginBubble = document.querySelector('.hide-bubble')
 const mainPage = document.querySelector('.main-page');
@@ -17,7 +18,8 @@ const password = document.getElementById('password-input');
 const buttonSearch = document.getElementById('search-btn');
 const calendar = document.getElementById('calendar');
 const dropdownRoomSelector = document.getElementById('roomTypeSelector');
-const buttonSumbmitLogin = document.getElementById('submit-login')
+const buttonSumbmitLogin = document.getElementById('submit-login');
+const buttonLogout = document.getElementById('logout');
 
 let availableRooms;
 let customer;
@@ -26,6 +28,8 @@ let bookings;
 let roomData;
 let rooms;
 let selectedCalendarDate;
+
+buttonLogout.addEventListener('click', logout)
 
 buttonSearch.addEventListener('click', searchRoomsByDate)
 dropdownRoomSelector.addEventListener('change', searchRoomsByType)
@@ -86,13 +90,13 @@ function signIn(){
 function viewCustomerDashboard(){
     show(mainPage)
     hide(loginBubble)
-    existingBookingsSection.innerHTML = ''
+    existingBookingsSection.innerHTML = '<p>Your current bookings are:'
     customer.findCustomerBookings(bookingData)
     const total = customer.getTotalCost(rooms)
     const fixedTotal = total.toFixed(2)
     greetingSection.innerHTML = `
     <h2>Welcome, ${customer.name}!</h2>
-    <h3>You have spent ${fixedTotal}</h3>
+    <h3>You have spent $${fixedTotal}</h3>
     `
     customer.bookings.forEach(booking => {
         existingBookingsSection.innerHTML += `
@@ -102,6 +106,11 @@ function viewCustomerDashboard(){
         </div>
         `
     }) 
+};
+
+function logout() {
+    hide(mainPage)
+    show(loginBubble)
 };
 
 function searchRoomsByDate(){
@@ -126,9 +135,10 @@ function showAvailableBookings(){
     availableRooms.forEach(room => {
         existingBookingsSection.innerHTML += `
         <div class="booking">
+            <img src="./images/tatami.png" class="tatami"/>
             <p>Room Number: ${room.number}</p>
             <p>Room Type: ${room.roomType}</p>
-            <p>Cost Per Night: ${room.costPerNight}<p>
+            <p>Cost Per Night: $${room.costPerNight}<p>
             <button class="booking-button" id="${room.number}">Book this Room</button>  
         </div>
         `
