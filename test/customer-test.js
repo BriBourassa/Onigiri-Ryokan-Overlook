@@ -2,6 +2,7 @@ import chai from 'chai';
 import {customers, rooms, bookings} from './test-data';
 const expect = chai.expect;
 import Customer from '../src/classes/Customer-class';
+import Rooms from '../src/classes/Rooms-class';
 
 
 describe('customer', () => {
@@ -13,6 +14,7 @@ describe('customer', () => {
         customer2 = new Customer(customers[1])
     })
 
+        // all these cna be one! make a customer :)
     it('should be a function', () => {
         expect(Customer).to.be.a('function')
     })
@@ -31,6 +33,7 @@ describe('customer', () => {
         expect(customer1.name).to.equal("Leatha Ullrich")
         expect(customer2.name).to.equal("Rocio Schuster")
     })
+/// end
 
     it('should be able to store bookings in bookings array', () => {
         customer1.findCustomerBookings(bookings)
@@ -38,9 +41,17 @@ describe('customer', () => {
         expect(customer1.bookings).to.deep.equal([bookings[0], bookings[1]])
         expect(customer2.bookings).to.deep.equal([bookings[2]])
     })
-  
-    it('should assign correct username to customer instantiation', () => {
-        expect(customer1.username).to.equal(1)
+
+    it('should get the total cost of rooms', () => {
+        const testRooms = new Rooms(rooms)
+        customer1.findCustomerBookings(bookings)
+        const total = customer1.getTotalCost(testRooms)
+        expect(total).to.equal(835.78)
     })
 
+    it('should be able to add a new booking', () => {
+        customer1.addNewBooking(bookings[0])
+        expect(customer1.bookings).to.deep.equal([bookings[0]])
+        expect(customer1.bookings.length).to.equal(1)
+    })
 });

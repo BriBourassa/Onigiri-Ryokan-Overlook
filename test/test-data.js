@@ -12,7 +12,7 @@ const customers = [
 
 const rooms = [
     {
-        number: 1,
+        number: 24,
         roomType: "residential suite",
         bidet: true,
         bedSize: "queen",

@@ -17,9 +17,6 @@ const calendar = document.getElementById('calendar');
 const dropdownRoomSelector = document.getElementById('roomTypeSelector');
 const buttonSumbmitLogin = document.getElementById('submit-login')
 
-// const buttonNewBooking = document.getElementById(`${room.number}`);
-// buttonNewBooking.addEventListener('click', createNewBooking)
-
 let availableRooms;
 let customer;
 let bookingData;
@@ -34,13 +31,13 @@ existingBookingsSection.addEventListener('click', function(event) {
     if(event.target.className == 'booking-button'){
         createNewBooking(parseInt(event.target.id));
     }
-})
+});
 
-buttonSumbmitLogin.addEventListener('click', login)
-window.addEventListener('load', fetchStuff)
+buttonSumbmitLogin.addEventListener('click', validateLogin)
+// window.addEventListener('load', fetchStuff)
 
 function fetchStuff(){
-fetchAll(1)
+fetchAll()
     .then(data => {
     customer = new Customer(data[0])
     console.log('customers id:', customer.username)
@@ -54,17 +51,35 @@ fetchAll(1)
 
 function show(element) {
     element.classList.remove('hidden');
-  };
+};
   
-  function hide(element) {
+function hide(element) {
     element.classList.add('hidden');
-  };
+};
 
-function login(){
+function login(username, password){
+
+}
+
+function validateLogin(username, password){
+    // if password is NOT 'overlook2021',
+        // first 8 letters substring are not customer
+    // change main innerhtml to error message
+
+    // parseint
+
+    //fetch needs number in advance
+    
+
+
+
+    // }
+    fetchStuff()
     show(mainPage)
     hide(loginBubble)
-    // .find()
-//     if (customer.username === customer.name${id})
+  
+   
+// //     if (the input value === "customer50")
 
 };
 
@@ -73,7 +88,6 @@ function viewCustomerDashboard(){
     existingBookingsSection.innerHTML = ''
     customer.findCustomerBookings(bookingData)
     console.log('this is the dashboard')
-    // console.log(customer.findCustomerBookings(bookingData))
     const total = customer.getTotalCost(rooms)
    greetingSection.innerHTML = `
     <h2>Welcome, ${customer.name}!</h2>
@@ -122,9 +136,7 @@ function showAvailableBookings(){
 };
 
 function createNewBooking(roomNum){
-  
-    console.log('the thing is happening is post')
-
+    // console.log('the thing is happening is post')
     const post = fetch('http://localhost:3001/api/v1/bookings', {
         method: 'POST',
         headers: {
@@ -140,11 +152,8 @@ function createNewBooking(roomNum){
             .then(response => {
                 fetchStuff() 
             })
-
    customer.addNewBooking(roomNum)
-
    return post
-   
 };
 
 
