@@ -70,23 +70,14 @@ function signIn(){
   function validateInput(username, password){
       if(username.substring(0, 8) !== 'customer'){
           alert('Sorry, incorrect USERNAME! Please try again.')
-      //   loginBubble.innerHTML = ''
-      //   loginBubble.innerHTML +=  `<div class="displayed-bookings">
-      //   <p>Sorry! Incorrect Username<p>`
         return
       }
       if(parseInt(username.substring(8))  > 50 || parseInt(username.substring(8)) < 1){
           alert('USERNAME number must be between 1 and 50! We only have 50 customers here.')
-      //   loginBubble.innerHTML = ''
-      //   loginBubble.innerHTML +=  `<div class="displayed-bookings">
-      //   <p>Sorry! Incorrect Username<p>`
         return
       }
     if(password !== 'overlook2021'){
         alert('Sorry, incorrect PASSWORD! Please try again.')
-    //   loginBubble.innerHTML = ''
-    //   loginBubble.innerHTML +=  `<div class="displayed-bookings">
-    //   <p>Sorry! Incorrect Password<p>`
       return
     }
     return username.substring(8)
@@ -117,7 +108,6 @@ function searchRoomsByDate(){
     event.preventDefault()
     selectedCalendarDate = calendar.value.replaceAll('-', '/')
     const bookedRoomNumbers = bookings.getBookedRoomNumbersByDate(selectedCalendarDate)
-    // availableRooms = rooms.getAvailableRooms(bookedRoomNumbers)
     rooms.getAvailableRooms(bookedRoomNumbers)
     availableRooms = rooms.availableRooms
     showAvailableBookings()
