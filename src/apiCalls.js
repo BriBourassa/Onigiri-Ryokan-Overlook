@@ -10,9 +10,9 @@ const fetchData = (url) => {
     .catch(error =>  alert(`FATAL ERROR!!! ${error}`))
  };
      
- const fetchAll = () => {
+ const fetchAll = (id) => {
     return Promise.all([
-     fetchData("http://localhost:3001/api/v1/customers"),
+     fetchData(`http://localhost:3001/api/v1/customers/${id}`),
      fetchData("http://localhost:3001/api/v1/bookings"),
      fetchData("http://localhost:3001/api/v1/rooms"),
  ])

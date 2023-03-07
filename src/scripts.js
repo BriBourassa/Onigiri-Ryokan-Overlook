@@ -11,6 +11,8 @@ const loginBubble = document.querySelector('.hide-bubble')
 const mainPage = document.querySelector('.main-page');
 const existingBookingsSection = document.getElementById('existingBookingsSection');
 const greetingSection = document.getElementById('greeting');
+const username = document.getElementById('username-input');
+const password = document.getElementById('password-input');
 
 const buttonSearch = document.getElementById('search-btn');
 const calendar = document.getElementById('calendar');
@@ -33,20 +35,23 @@ existingBookingsSection.addEventListener('click', function(event) {
     }
 });
 
-buttonSumbmitLogin.addEventListener('click', validateLogin)
-// window.addEventListener('load', fetchStuff)
+buttonSumbmitLogin.addEventListener('click', () => {
+    event.preventDefault()
+    signIn()
+})
 
-function fetchStuff(){
-fetchAll()
+function fetchStuff(id){
+fetchAll(id)
     .then(data => {
+        // console.log('fetching stuff now!!!!!!')
     customer = new Customer(data[0])
-    console.log('customers id:', customer.username)
+  
     bookingData = data[1].bookings
     bookings =  new Booking(bookingData)
     roomData = data[2].rooms
     rooms = new Room(roomData) 
     viewCustomerDashboard()
-    })
+    }) 
 };
 
 function show(element) {
@@ -57,37 +62,44 @@ function hide(element) {
     element.classList.add('hidden');
 };
 
-function login(username, password){
+function signIn(){
+    // console.log("hi this is signin", username.value, password.value)
+    const id = validateInput(username.value, password.value)
+    if(id){
+      fetchStuff(id)
+    }
+  };
 
-}
-
-function validateLogin(username, password){
-    // if password is NOT 'overlook2021',
-        // first 8 letters substring are not customer
-    // change main innerhtml to error message
-
-    // parseint
-
-    //fetch needs number in advance
-    
-
-
-
-    // }
-    fetchStuff()
-    show(mainPage)
-    hide(loginBubble)
+  function validateInput(username, password){
+    if(password !== 'overlook2021'){
+      existingBookingsSection.innerHTML = ''
+      existingBookingsSection.innerHTML +=  `<div class="displayed-bookings">
+      <p>Sorry! Incorrect Password<p>`
+      return
+    }
+    if(username.substring(0, 8) !== 'customer'){
+      existingBookingsSection.innerHTML = ''
+      existingBookingsSection.innerHTML +=  `<div class="displayed-bookings">
+      <p>Sorry! Incorrect Username<p>`
+      return
+    }
+    if(parseInt(username.substring(8))  > 50 || parseInt(username.substring(8)) < 1){
+      existingBookingsSection.innerHTML = ''
+      existingBookingsSection.innerHTML +=  `<div class="displayed-bookings">
+      <p>Sorry! Incorrect Username<p>`
+      return
+    }
+    return username.substring(8)
+  };
   
-   
-// //     if (the input value === "customer50")
 
-};
 
 function viewCustomerDashboard(){
-    // show(mainPage)
+    show(mainPage)
+    hide(loginBubble)
     existingBookingsSection.innerHTML = ''
     customer.findCustomerBookings(bookingData)
-    console.log('this is the dashboard')
+    // console.log('this is the dashboard')
     const total = customer.getTotalCost(rooms)
    greetingSection.innerHTML = `
     <h2>Welcome, ${customer.name}!</h2>
@@ -116,7 +128,7 @@ function searchRoomsByType(){
     const transformedSelectedType = selectedRoomType.replace('-', ' ')
     const availableRoomsByType = rooms.getAvailableRoomsByType(transformedSelectedType)
     availableRooms = availableRoomsByType
-        console.log('transformed type:', transformedSelectedType)
+        // console.log('transformed type:', transformedSelectedType)
         showAvailableBookings()
 };
 
@@ -150,10 +162,10 @@ function createNewBooking(roomNum){
         })
             .then(response => response.json())
             .then(response => {
-                fetchStuff() 
+                fetchStuff(customer.id) 
             })
-   customer.addNewBooking(roomNum)
-   return post
+            // customer.addNewBooking(roomNum)
+    return post
 };
 
 
