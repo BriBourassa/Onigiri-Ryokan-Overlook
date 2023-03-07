@@ -24,15 +24,21 @@ GET and POST
         -This project was my first experience using POST requests and implimenting error handling in fetch calls.
 
 Unit testing
-       - This project helped me get more comfortable and gain experince writing my own unit tests for the methods I created. I made sample data and with the help of beforeEach() managed to make the tests look clean and concise.
-       
 
+        - This project helped me get more comfortable and gain experince writing my own unit tests for the methods I created. I made sample data and with the help of beforeEach() managed to make the tests look clean and concise.
+ 
 LOGIN functionality
        - I learned more about user authentification, although the login page isn't a "true" login, it was excellent practice figuring out what will be expected of me in the future.
 
 
 Multiple APIs and classes
        - I had three sets of APIs to draw from, and created corraborating classes to help manipulate that data in my functions.
+
+
+## Future Iterations ##
+
+I would like to add a log out feature and get more CSS 
+
 
 ## Developer
 - [Bri Bourassa](https://github.com/BriBourassa)
